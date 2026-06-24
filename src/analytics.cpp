@@ -23,3 +23,53 @@ double calculateMaximum(const std::vector<double>& prices){
 
     return maximum;
 }
+
+double calculateMean(const std::vector<double>& prices){
+    double sum = 0;
+
+    for (double price : prices) {
+        sum += price;
+    }
+
+    return sum/prices.size();
+}
+
+double calculateNetPriceChange(const std::vector<double>& prices){
+    return prices.back() - prices.front();
+}
+
+int countUpwardMoves(const std::vector<double>& prices) {
+    int count = 0;
+
+    for (std::size_t i = 1; i < prices.size(); i++) {
+        if (prices[i] > prices[i - 1]) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int countDownwardMoves(const std::vector<double>& prices) {
+    int count = 0;
+
+    for (std::size_t i = 1; i < prices.size(); i++) {
+        if (prices[i] < prices[i - 1]) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int countFlatMoves(const std::vector<double>& prices) {
+    int count = 0;
+
+    for (std::size_t i = 1; i < prices.size(); i++) {
+        if (prices[i] == prices[i - 1]) {
+            count++;
+        }
+    }
+
+    return count;
+}

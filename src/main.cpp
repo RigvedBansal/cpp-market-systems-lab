@@ -38,9 +38,17 @@ int main() {
         std::cout << it << '\n';
     }
 
-    std::cout << "\nMaximum Price entered: "<<calculateMaximum(prices)<<"\n";
-    std::cout << "Minimum Price entered: "<<calculateMinimum(prices)<<"\n";
+    std::cout << "\nMARKET DATA REPORT\n";
+    std::cout << "------------------\n";
 
+    std::cout << "Observations: " << prices.size() << '\n';
+    std::cout << "Minimum price: " << calculateMinimum(prices) << '\n';
+    std::cout << "Maximum price: " << calculateMaximum(prices) << '\n';
+    std::cout << "Mean price: " << calculateMean(prices) << '\n';
+    std::cout << "Net price change: " << calculateNetPriceChange(prices) << '\n';
+    std::cout << "Upward moves: " << countUpwardMoves(prices) << '\n';
+    std::cout << "Downward moves: " << countDownwardMoves(prices) << '\n';
+    std::cout << "Flat moves: " << countFlatMoves(prices) << '\n';
 
     return 0;
 }
