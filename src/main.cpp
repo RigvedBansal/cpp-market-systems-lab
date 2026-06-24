@@ -47,9 +47,14 @@ int main() {
     std::cout << "Mean price: " << calculateMean(prices) << '\n';
     std::cout << "Net price change: " << calculateNetPriceChange(prices) << '\n';
     std::cout << "Percent price change: " << calculatePercentagePriceChange(prices) << '\n';
+    std::vector<double> returns = calculateSimpleReturns(prices);
+    std::cout << "Simple returns:\n";
+    for (double currentReturn : returns) {
+        std::cout << currentReturn << ", ";
+    }
+    std::cout << "\n";
     std::cout << "Upward moves: " << countUpwardMoves(prices) << '\n';
     std::cout << "Downward moves: " << countDownwardMoves(prices) << '\n';
     std::cout << "Flat moves: " << countFlatMoves(prices) << '\n';
-
     return 0;
 }

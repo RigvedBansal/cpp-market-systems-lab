@@ -76,3 +76,22 @@ int countFlatMoves(const std::vector<double>& prices) {
 
     return count;
 }
+
+std::vector<double> calculateSimpleReturns(const std::vector<double>& prices) {
+    std::vector<double> returns;
+
+    if (prices.size() < 2) {
+        return returns;
+    }
+
+    returns.reserve(prices.size() - 1);
+
+    for (std::size_t i = 1; i < prices.size(); i++) {
+        double currentReturn =
+            (prices[i] - prices[i - 1]) / prices[i - 1];
+
+        returns.push_back(currentReturn);
+    }
+
+    return returns;
+}
