@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <analytics.hpp>
 
 int main() {
     int numberOfPrices;
@@ -36,5 +37,10 @@ int main() {
     for (auto it : prices) {
         std::cout << it << '\n';
     }
+
+    std::cout << "\nMaximum Price entered: "<<calculateMaximum(prices)<<"\n";
+    std::cout << "Minimum Price entered: "<<calculateMinimum(prices)<<"\n";
+
+
     return 0;
 }
