@@ -46,6 +46,7 @@ int main() {
     std::cout << "Maximum price: " << calculateMaximum(prices) << '\n';
     std::cout << "Mean price: " << calculateMean(prices) << '\n';
     std::cout << "Net price change: " << calculateNetPriceChange(prices) << '\n';
+    std::cout << "Percent price change: " << calculatePercentagePriceChange(prices) << '\n';
     std::cout << "Upward moves: " << countUpwardMoves(prices) << '\n';
     std::cout << "Downward moves: " << countDownwardMoves(prices) << '\n';
     std::cout << "Flat moves: " << countFlatMoves(prices) << '\n';

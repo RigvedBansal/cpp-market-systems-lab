@@ -37,6 +37,9 @@ double calculateMean(const std::vector<double>& prices){
 double calculateNetPriceChange(const std::vector<double>& prices){
     return prices.back() - prices.front();
 }
+double calculatePercentagePriceChange(const std::vector<double>& prices){
+    return (calculateNetPriceChange(prices)/prices.front()) * 100;
+}
 
 int countUpwardMoves(const std::vector<double>& prices) {
     int count = 0;
