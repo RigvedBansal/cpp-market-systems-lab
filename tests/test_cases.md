@@ -1,109 +1,27 @@
 # Test Cases
 
-This document records the manual test cases used to verify the market-data input system and analytics functions.
+Manual test cases used to verify the current market-data input and analytics functionality.
 
-## 1. Normal price sequence
-
-### Input
-
-```text
-Number of prices: 4
-Prices: 100, 120, 90, 105
-```
-
-### Expected result
-
-```text
-Minimum price: 90
-Maximum price: 120
-```
-
-### Status
-
-Passed.
-
----
-
-## 2. Single price
-
-### Input
-
-```text
-Number of prices: 1
-Prices: 42.5
-```
-
-### Expected result
-
-```text
-Minimum price: 42.5
-Maximum price: 42.5
-```
-
-### Status
-
-Passed.
-
----
-
-## 3. Equal prices
-
-### Input
-
-```text
-Number of prices: 3
-Prices: 50, 50, 50
-```
-
-### Expected result
-
-```text
-Minimum price: 50
-Maximum price: 50
-```
-
-### Status
-
-Passed.
-
----
-
-## 4. Decimal prices
-
-### Input
-
-```text
-Number of prices: 3
-Prices: 100.25, 99.75, 101.50
-```
-
-### Expected result
-
-```text
-Minimum price: 99.75
-Maximum price: 101.50
-```
-
-### Status
-
-Passed.
-
----
-
-## 5. Strictly increasing prices
+## 1. Mixed price movements
 
 ### Input
 
 ```text
 Number of prices: 5
-Prices: 10, 20, 30, 40, 50
+Prices: 100, 105, 105, 98, 110
 ```
 
 ### Expected result
 
 ```text
-Minimum price: 10
-Maximum price: 50
+Observations: 5
+Minimum price: 98
+Maximum price: 110
+Mean price: 103.6
+Net price change: 10
+Upward moves: 2
+Downward moves: 1
+Flat moves: 1
 ```
 
 ### Status
@@ -112,7 +30,35 @@ Passed.
 
 ---
 
-## 6. Strictly decreasing prices
+## 2. Strictly increasing prices
+
+### Input
+
+```text
+Number of prices: 3
+Prices: 10, 20, 30
+```
+
+### Expected result
+
+```text
+Observations: 3
+Minimum price: 10
+Maximum price: 30
+Mean price: 20
+Net price change: 20
+Upward moves: 2
+Downward moves: 0
+Flat moves: 0
+```
+
+### Status
+
+Passed.
+
+---
+
+## 3. Strictly decreasing prices
 
 ### Input
 
@@ -124,8 +70,98 @@ Prices: 50, 40, 30, 20, 10
 ### Expected result
 
 ```text
+Observations: 5
 Minimum price: 10
 Maximum price: 50
+Mean price: 30
+Net price change: -40
+Upward moves: 0
+Downward moves: 4
+Flat moves: 0
+```
+
+### Status
+
+Passed.
+
+---
+
+## 4. Single price
+
+### Input
+
+```text
+Number of prices: 1
+Prices: 42.5
+```
+
+### Expected result
+
+```text
+Observations: 1
+Minimum price: 42.5
+Maximum price: 42.5
+Mean price: 42.5
+Net price change: 0
+Upward moves: 0
+Downward moves: 0
+Flat moves: 0
+```
+
+### Status
+
+Passed.
+
+---
+
+## 5. Equal prices
+
+### Input
+
+```text
+Number of prices: 3
+Prices: 50, 50, 50
+```
+
+### Expected result
+
+```text
+Observations: 3
+Minimum price: 50
+Maximum price: 50
+Mean price: 50
+Net price change: 0
+Upward moves: 0
+Downward moves: 0
+Flat moves: 2
+```
+
+### Status
+
+Passed.
+
+---
+
+## 6. Decimal prices
+
+### Input
+
+```text
+Number of prices: 3
+Prices: 100.25, 99.75, 101.50
+```
+
+### Expected result
+
+```text
+Observations: 3
+Minimum price: 99.75
+Maximum price: 101.50
+Mean price: 100.50
+Net price change: 1.25
+Upward moves: 1
+Downward moves: 1
+Flat moves: 0
 ```
 
 ### Status
@@ -144,7 +180,7 @@ Number of prices: 0
 
 ### Expected behaviour
 
-The program rejects the observation count and exits without requesting prices.
+The program rejects the observation count and exits.
 
 ### Expected output
 
@@ -208,11 +244,10 @@ Passed.
 
 ## 10. Zero price
 
-### Input
+### Input sequence
 
 ```text
 Number of prices: 2
-
 Price 1: 0
 Price 1: 100
 Price 2: 120
@@ -242,11 +277,10 @@ Passed.
 
 ## 11. Negative price
 
-### Input
+### Input sequence
 
 ```text
 Number of prices: 2
-
 Price 1: -50
 Price 1: 100
 Price 2: 120
@@ -276,11 +310,10 @@ Passed.
 
 ## 12. Non-numeric price
 
-### Input
+### Input sequence
 
 ```text
 Number of prices: 2
-
 Price 1: hello
 Price 1: 100
 Price 2: 120
@@ -288,7 +321,7 @@ Price 2: 120
 
 ### Expected behaviour
 
-The program clears the failed input state, removes the invalid input, and requests the same price again.
+The program clears the failed input state, discards the invalid input, and requests the same price again.
 
 ### Expected output
 
