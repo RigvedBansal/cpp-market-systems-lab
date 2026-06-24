@@ -59,8 +59,6 @@ cpp-market-systems-lab/
 │   └── sample_prices.txt
 ├── tests/
 │   └── test_cases.md
-├── docs/
-│   └── learning_log.md
 ├── .gitignore
 ├── LICENSE
 └── README.md
