@@ -1,52 +1,68 @@
 # C++ Market Systems Lab
 
-An evolving C++ project focused on developing a practical understanding of modern C++, program architecture, memory, performance, and market-system design.
+An evolving C++ project focused on developing practical understanding of modern C++, quantitative market analytics, program architecture, memory management, and performance-sensitive system design.
 
-The project currently contains a command-line market-data analytics module and will gradually evolve into a single-instrument limit order book and matching engine.
+The project currently contains a command-line market-data analytics application. It will progressively evolve into a single-instrument limit order book and matching engine.
 
 ## Current Status
 
-The first version of the market-data analytics module is operational.
+The initial market-data analytics module is operational.
 
 ### Implemented
 
-* Validated input for the number of price observations
-* Storage of decimal market prices using `std::vector`
-* Rejection of non-numeric, zero, and negative prices
-* Minimum-price calculation
-* Maximum-price calculation
-* Mean-price calculation
+* Validated input for market-price observations
+* Storage of decimal prices using `std::vector`
+* Rejection of invalid, zero, and negative prices
+* Minimum and maximum price
+* Mean price
 * Net price change
-* Upward-move count
-* Downward-move count
-* Flat-move count
+* Percentage price change
+* Upward, downward, and flat movement counts
+* Simple period-to-period returns
+* Population standard deviation of returns
 * Separation of declarations and implementations using header and source files
-* Manual test cases covering normal and invalid input
 * Terminal-based compilation using Clang
+
+## Current Output
+
+The application generates a market-data report containing:
+
+```text
+Observations
+Minimum price
+Maximum price
+Mean price
+Net price change
+Percentage price change
+Upward moves
+Downward moves
+Flat moves
+Simple returns
+Per-period volatility
+```
 
 ## Planned Analytics Features
 
-* Percentage price change
-* Simple returns
-* Per-period volatility
 * Maximum drawdown
+* Improved numerical formatting
 * File-based market-data input
-* Automated unit tests
+* Automated unit testing
+* Summary result structures
 
 ## Long-Term Roadmap
 
-The project will eventually include:
+The project will gradually expand to include:
 
-* Limit-order modelling
-* Buy and sell order books
+* Strongly typed order models
+* Buy and sell limit-order books
 * Price-time priority
-* Full and partial order fills
+* Full and partial fills
 * Order cancellation
 * Trade generation
 * Market-event replay
-* Performance benchmarks
+* Performance benchmarking
 * Move semantics and allocation tracking
-* Multithreaded simulation
+* Multithreaded simulations
 * CMake project configuration
 * Sanitizers and static analysis
 * Continuous integration
@@ -62,8 +78,6 @@ cpp-market-systems-lab/
 │   └── analytics.cpp
 ├── data/
 │   └── sample_prices.txt
-├── tests/
-│   └── test_cases.md
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -71,7 +85,7 @@ cpp-market-systems-lab/
 
 ## Building the Project
 
-From the repository root, compile using:
+From the repository root:
 
 ```bash
 clang++ -std=c++20 -Wall -Wextra -Wpedantic \
@@ -104,28 +118,20 @@ Minimum price: 98
 Maximum price: 110
 Mean price: 103.6
 Net price change: 10
+Percentage price change: 10%
 Upward moves: 2
 Downward moves: 1
 Flat moves: 1
+Simple returns:
+0.05
+0
+-0.0666667
+0.122449
+Per-period volatility: ...
 ```
-
-## Learning Objectives
-
-This project is being built alongside The Cherno’s C++ course to develop practical understanding of:
-
-* The C++ compilation and linking process
-* Header and source-file separation
-* References and value semantics
-* Standard-library containers
-* Input validation
-* Modular program design
-* Testing and debugging
-* Object lifetime and memory ownership
-* Benchmark-driven optimisation
-* Performance-sensitive systems programming
 
 ## Development Approach
 
-Features are implemented incrementally and recorded through meaningful Git commits.
+The project is being built incrementally alongside The Cherno’s C++ course.
 
-The emphasis is on understanding how each component works and why particular design decisions are made, rather than copying a complete implementation.
+Each stage introduces new language concepts and immediately applies them to a growing market-systems project. The emphasis is on understanding implementation decisions, memory behaviour, correctness, and measured performance rather than copying a finished system.
