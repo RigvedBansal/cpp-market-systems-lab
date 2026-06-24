@@ -56,5 +56,6 @@ int main() {
     std::cout << "Upward moves: " << countUpwardMoves(prices) << '\n';
     std::cout << "Downward moves: " << countDownwardMoves(prices) << '\n';
     std::cout << "Flat moves: " << countFlatMoves(prices) << '\n';
+    std::cout << "Per-period volatility: " << calculatePopStdDev(prices) << '\n';
     return 0;
 }

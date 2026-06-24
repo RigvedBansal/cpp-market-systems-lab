@@ -1,4 +1,5 @@
 #include "analytics.hpp"
+#include <cmath>
 
 double calculateMinimum(const std::vector<double>& prices){
     double minimum = prices[0];
@@ -94,4 +95,24 @@ std::vector<double> calculateSimpleReturns(const std::vector<double>& prices) {
     }
 
     return returns;
+}
+
+double calculatePopStdDev(const std::vector<double>& prices) {
+    std::vector<double> returns = calculateSimpleReturns(prices);
+
+    if (returns.empty()) {
+        return 0.0;
+    }
+
+    double mean = calculateMean(returns);
+    double sum = 0.0;
+
+    for (double currentReturn : returns) {
+        double difference = currentReturn - mean;
+        sum += difference * difference;
+    }
+
+    double variance = sum / returns.size();
+
+    return std::sqrt(variance);
 }
